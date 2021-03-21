@@ -1,0 +1,37 @@
+.banner{
+  z-index: -2;
+  position: relative;
+  width: 140%;
+  height: 100%;
+
+  & > *{
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+}
+
+
+
+.tovar {
+
+  h5 {
+    transition: all .3s;
+    color: #212529;
+  }
+
+  &:hover {
+    h5 {
+      color: #1771e6;
+    }
+    .blimg {
+      opacity: 1;
+    }
+  }
+
+  .blimg{
+    transition: all .3s;
+    max-width: 30%;
+    opacity: .8;
+  }
+}
