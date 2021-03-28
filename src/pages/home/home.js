@@ -2,27 +2,27 @@ import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import Image from "next/image";
 import css from "./home.module.scss"
-import CatalogItem from "../bani/category/catalogProduct";
+import CardProduct from "../../components/cardProduct/cardProduct";
 
 function UniqueOffer() {
 
     return <div className="mt-5">
         <div className="mb-4 p-3 bg-white rounded shadow-lg gr-grey text-white">
-            <h5 className="mb-2 "><i className="bi bi-check-circle-fill pe-3 text-secondary"></i>Мы не скрываем цен</h5>
+            <h5 className="mb-2 "><i className="bi bi-check-circle-fill pe-3 text-primary"></i>Мы не скрываем цен</h5>
             <p className="mb-3">
                 Вы можите собрать полностью свою комплектацию от фундамента до крыши и увидеть полную сметную стоимость
                 на сайте
             </p>
-            <a href="#" className="btn btn-secondary shadow-sm"><i className="bi bi-hammer"></i> Конструктор онлайн</a>
+            <a href="#" className="btn btn-primary shadow-sm"><i className="bi bi-hammer"></i> Конструктор онлайн</a>
         </div>
 
         <div className="mb-4 p-3 bg-white rounded shadow-lg gr-sky text-white">
-            <h5 className="mb-2 "><i className="bi bi-check-circle-fill pe-3 text-secondary"></i>Посещение офиса
+            <h5 className="mb-2 "><i className="bi bi-check-circle-fill pe-3 text-primary"></i>Посещение офиса
                 необзательно</h5>
             <p className="mb-3">
                 Оформить заказ и получить договор можно оналйн без выезда в офис
             </p>
-            <a href="#" className="btn btn-secondary shadow-sm">Как мы работаем</a>
+            <a href="#" className="btn btn-primary shadow-sm">Как мы работаем</a>
         </div>
 
     </div>;
@@ -64,8 +64,8 @@ export default function HomePage(props) {
                     </div>
                 </Col>
                 <Col xs={12} md={4} className="mb-3">
-                    <a href="/" className={css.tovar}>
-                        <div className="ratio ratio-21x9 rounded bg-primary">
+                    <a href="/bani" className={css.tovar}>
+                        <div className="ratio ratio-21x9 rounded bg-secondary">
                             <div className="p-4 d-flex flex-column justify-content-between">
                                 <Image
                                     className={css.blimg}
@@ -76,14 +76,14 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Каркасные бани</h5>
-                                <a className="z1" href="/">Подробнее</a>
+                                <a className="z1" href="/bani">Подробнее</a>
                             </div>
                         </div>
                     </a>
                 </Col>
                 <Col xs={12} md={4} className="mb-3">
-                    <a href="/" className={css.tovar}>
-                        <div className="ratio ratio-21x9 rounded bg-primary">
+                    <a href="/bani" className={css.tovar}>
+                        <div className="ratio ratio-21x9 rounded bg-secondary">
                             <div className="p-4 d-flex flex-column justify-content-between">
                                 <Image
                                     className={css.blimg}
@@ -94,14 +94,14 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Бани из бревна</h5>
-                                <a className="z1" href="/">Подробнее</a>
+                                <a className="z1" href="/bani">Подробнее</a>
                             </div>
                         </div>
                     </a>
                 </Col>
                 <Col xs={12} md={4} className="mb-3">
-                    <a href="/" className={css.tovar}>
-                        <div className="ratio ratio-21x9 rounded bg-primary">
+                    <a href="/bani" className={css.tovar}>
+                        <div className="ratio ratio-21x9 rounded bg-secondary">
                             <div className="p-4 d-flex flex-column justify-content-between">
                                 <Image
                                     className={css.blimg}
@@ -112,7 +112,7 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Брусовые бани</h5>
-                                <a className="z1" href="/">Подробнее</a>
+                                <a className="z1" href="/bani">Подробнее</a>
                             </div>
                         </div>
                     </a>
@@ -131,15 +131,7 @@ export default function HomePage(props) {
                 </Col>
             </Row>
         </Container>
-        <div className="bg-primary">
-            <div>
-                <Image
-                    src="/img/leftCircleProject.png"
-                    layout="fill"
-                    objectFit="contain"
-                />
-            </div>
-
+        <div className="bg-secondary">
             <Container className="pt-6 pb-6">
                 <Row>
                     <Col xs={12}>
@@ -151,16 +143,40 @@ export default function HomePage(props) {
                         </div>
                     </Col>
                     <Col xs={12} md={4}>
-                        <CatalogItem/>
+                        <CardProduct/>
                     </Col>
                     <Col xs={12} md={4}>
-                        <CatalogItem/>
+                        <CardProduct/>
                     </Col>
                     <Col xs={12} md={4}>
-                        <CatalogItem/>
+                        <CardProduct/>
                     </Col>
                 </Row>
             </Container>
+        </div>
+        <div className="advantages">
+            <Image
+                width="497"
+                height="586"
+                src="/img/advantages--before.png"
+                layout="responsive"
+            />
+        </div>
+
+        <div className="advantagesLeft">
+            <Image
+                width="497"
+                height="586"
+                src="/img/advantages--before.png"
+                layout="responsive"
+            />
+        </div>
+        <div className="banner">
+            <Image
+                src="/img/banner__bg.jpg"
+                layout="fill"
+                objectFit="cover"
+            />
         </div>
     </>
 }

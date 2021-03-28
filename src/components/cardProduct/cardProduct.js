@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from "next/image";
-import {Col, Container, Row} from "react-bootstrap";
+import Link from 'next/link'
 
 // const {API_URL} = process.env
 
 
-export default function CatalogItem(bani) {
+export default function CardProduct(bani) {
     return <div className="mb-4 bg-white rounded shadow">
         <div className="ratio ratio-4x3">
             <Image
@@ -29,13 +29,15 @@ export default function CatalogItem(bani) {
                     <div className="pb-2">
                         <div className="d-flex">
                             <del className="text-muted"> {Number(150000).toLocaleString()}</del>
-                            <div className="bg-secondary rounded-1 px-2 ms-2 fw-bolder"> -{Number(12000).toLocaleString()}</div>
+                            <div className="bg-primary rounded-1 px-2 ms-2 fw-bolder"> -{Number(12000).toLocaleString()}</div>
                         </div>
                         <div className="h5 fw-bold">{Number(100000).toLocaleString()} ₽</div>
                     </div>
-                    <a href="/">Подробнее</a>
+                    <Link href="/bani/project" passHref>
+                        <a>Подробнее</a>
+                    </Link>
                     {/*<div className="d-grid gap-1 me-3">*/}
-                    {/*<button className="btn btn-secondary d-block">Купить</button>*/}
+                    {/*<button className="btn btn-primary d-block">Купить</button>*/}
                     {/*</div>*/}
                 </div>
             </div>

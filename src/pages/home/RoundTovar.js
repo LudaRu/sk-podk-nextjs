@@ -11,7 +11,7 @@ export default function RoundTovar() {
                 objectFit="cover"
             />
         </div>
-        <div className="letter-btn text-center text-uppercase mt-2 text-primary">
+        <div className="letter-btn text-center text-uppercase mt-2 text-secondary">
             Каркасные бани
         </div>
     </div>

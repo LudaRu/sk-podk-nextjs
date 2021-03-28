@@ -8,12 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
     "next": "10.0.8",
     "node-sass": "^5.0.0",
     "react": "17.0.1",
     "react-bootstrap": "^2.0.0-alpha.0",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-step-wizard": "^5.3.5"
+  },
+  "devDependencies": {
+    "react-dadata": "^2.9.3"
   }
 }

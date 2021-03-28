@@ -2,29 +2,3 @@
 
 }
 
-.banner {
-  position: absolute;
-  z-index: -3;
-  width: 100%;
-  top: 0;
-  height: 100%;
-}
-
-.advantages {
-  z-index: -2;
-  width: 500px;
-  pointer-events: none;
-  position: absolute;
-  transform: translate(0%, 0%);
-  top: 25vh;
-  right: 80%;
-}
-.advantagesLeft {
-  z-index: -2;
-  width: 380px;
-  pointer-events: none;
-  position: absolute;
-  left: 85%;
-  top: -10%;
-  transform: scale(-1, 1);
-}
