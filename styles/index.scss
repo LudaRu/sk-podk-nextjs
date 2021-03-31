@@ -8,7 +8,7 @@ $danger: #e8286b;
 $info: #1771e6;
 $warning: #ff9b37;
 //$light: #eef0f2;
-$light: #ecf1f7;
+$light: #f5f5f6;
 $dark: #3c4055;
 $body-bg: #ffffff;
 
@@ -18,11 +18,14 @@ $body-bg: #ffffff;
 $link-color: $info;
 $link-decoration: none;
 
+$input-bg: $secondary;
+$input-focus-bg: #fff;
 
 $form-check-input-checked-color: $dark;
 $form-check-input-width: 1.5em;
 //$form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
 $form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.293 8.293l-6.294 6.294c.001-.001-2.292-2.294-2.292-2.294a1 1 0 00-1.414 1.414l2.294 2.294c.78.78 2.05.777 2.826 0l6.294-6.294a1 1 0 10-1.414-1.414z' fill='currentColor'></path></svg>") !default;
+$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.293 8.293l-6.294 6.294c.001-.001-2.292-2.294-2.292-2.294a1 1 0 00-1.414 1.414l2.294 2.294c.78.78 2.05.777 2.826 0l6.294-6.294a1 1 0 10-1.414-1.414z' fill='currentColor'></path></svg>") !default;
 
 
 @import "~bootstrap/scss/functions";
@@ -67,6 +70,9 @@ $spacers: (
 
 body, html, #__next {
   height: 100%;
+}
+.text-grey {
+  color: #6c757d;
 }
 
 .bg-primary, .bg-secondary {
@@ -151,6 +157,11 @@ body {
   left: 85%;
   top: -10%;
   transform: scale(-1, 1);
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
 }
 
 

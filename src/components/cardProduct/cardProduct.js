@@ -7,6 +7,8 @@ import Link from 'next/link'
 
 export default function CardProduct(bani) {
     return <div className="mb-4 bg-white rounded shadow">
+        <Link href="/bani/project" passHref>
+            <a>
         <div className="ratio ratio-4x3">
             <Image
                 className="rounded"
@@ -15,6 +17,8 @@ export default function CardProduct(bani) {
                 objectFit="cover"
             />
         </div>
+            </a>
+        </Link>
         <div className="d-flex justify-content-between px-3 border-top pt-2 pb-1">
             <div><span className="h6 fw-bolder">2x4</span> <span>8м<sup>2</sup></span></div>
             <div className="letter-btn text-muted">№ КБ-12</div>
@@ -34,7 +38,7 @@ export default function CardProduct(bani) {
                         <div className="h5 fw-bold">{Number(100000).toLocaleString()} ₽</div>
                     </div>
                     <Link href="/bani/project" passHref>
-                        <a>Подробнее</a>
+                        <a className="icon-link">Подробнее<i className="bi bi-chevron-right"></i></a>
                     </Link>
                     {/*<div className="d-grid gap-1 me-3">*/}
                     {/*<button className="btn btn-primary d-block">Купить</button>*/}

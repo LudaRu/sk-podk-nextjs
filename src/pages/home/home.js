@@ -30,7 +30,7 @@ function UniqueOffer() {
 
 export default function HomePage(props) {
     return <>
-        <Container className="mb-7">
+        <Container className="pt-4 mb-7">
             <Row>
                 <Col xs={12} md={6}>
                     <h1 className="display-5 fw-normal text-uppercase">Строим бани<br/>и дома</h1>
@@ -76,7 +76,7 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Каркасные бани</h5>
-                                <a className="z1" href="/bani">Подробнее</a>
+                                <a className="z1 icon-link" href="/bani">Подробнее<i className="bi bi-chevron-right"></i></a>
                             </div>
                         </div>
                     </a>
@@ -94,7 +94,7 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Бани из бревна</h5>
-                                <a className="z1" href="/bani">Подробнее</a>
+                                <a className="z1 icon-link" href="/bani">Подробнее<i className="bi bi-chevron-right"></i></a>
                             </div>
                         </div>
                     </a>
@@ -112,22 +112,10 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Брусовые бани</h5>
-                                <a className="z1" href="/bani">Подробнее</a>
+                                <a className="z1 icon-link" href="/bani">Подробнее<i className="bi bi-chevron-right"></i></a>
                             </div>
                         </div>
                     </a>
-                </Col>
-            </Row>
-            <Row>
-                <Col xs={12} md={3}>
-                    <div className="p-3 rounded bg-info text-white text-center">
-                        <h5><i className="bi bi-gift-fill"></i> Скидка на баню</h5>
-                    </div>
-                </Col>
-                <Col>
-                    <div className="bg-white p-3 rounded">
-                        <h5>Немного о нас</h5>
-                    </div>
                 </Col>
             </Row>
         </Container>

@@ -18,7 +18,7 @@ export default function Layout(props) {
     const {children} = props;
     return (
         <>
-            <header>
+            <header className="border-1 border-bottom bg-white">
                 <Navs/>
             </header>
             <main style={{minHeight: '100%'}}>
@@ -34,15 +34,18 @@ function Navs() {
     return <>
         <Container>
             <Row>
-                <Navbar collapseOnSelect expand="lg" className="mt-3 shadow-sm rounded-3 bg-white">
-                    <Navbar.Brand href="#home">
-                        <div style={{    width: '50px'}}>
+                <Navbar collapseOnSelect expand="lg" className="bg-white">
+                    <Navbar.Brand href="#home" className="d-flex justify-content-between">
+                        <div style={{width: '40px'}}>
                             <Image
-                                width="397"
-                                height="252"
-                                src="/img/logo5.png"
+                                width="1560"
+                                height="1190"
+                                src="/img/web-20180125012902790423-1560x1190.png"
                                 layout="responsive"
                             />
+                        </div>
+                        <div className="ps-3 pe-3">
+                            лисичка-строитель
                         </div>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
