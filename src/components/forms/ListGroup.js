@@ -33,7 +33,7 @@ export default function ListGroup({list, one}) {
                 {more ? <div className=" border-1 border-top py-2">
                     <Accordion>
                         <div className=" text-center"><CustomToggle eventKey="1"/></div>
-                        <Accordion.Collapse eventKey="1">
+                        <Accordion.Collapse eventKey="1" className="border-0">
                             <div className="mt-3 pt-2 border-1 border-top">{more}</div>
                         </Accordion.Collapse>
                     </Accordion>

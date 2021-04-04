@@ -64,7 +64,7 @@ export default function HomePage(props) {
                     </div>
                 </Col>
                 <Col xs={12} md={4} className="mb-3">
-                    <a href="/bani" className={css.tovar}>
+                    <a href="/bani/karkasnye-bani" className={css.tovar}>
                         <div className="ratio ratio-21x9 rounded bg-secondary">
                             <div className="p-4 d-flex flex-column justify-content-between">
                                 <Image
@@ -76,7 +76,7 @@ export default function HomePage(props) {
                                     objectPosition="right bottom"
                                 />
                                 <h5 className="z1">Каркасные бани</h5>
-                                <a className="z1 icon-link" href="/bani">Подробнее<i className="bi bi-chevron-right"></i></a>
+                                <a className="z1 icon-link" href="/bani/karkasnye-bani">Подробнее<i className="bi bi-chevron-right"></i></a>
                             </div>
                         </div>
                     </a>
@@ -131,13 +131,13 @@ export default function HomePage(props) {
                         </div>
                     </Col>
                     <Col xs={12} md={4}>
-                        <CardProduct/>
+                        {/*<CardProduct/>*/}
                     </Col>
                     <Col xs={12} md={4}>
-                        <CardProduct/>
+                        {/*<CardProduct/>*/}
                     </Col>
                     <Col xs={12} md={4}>
-                        <CardProduct/>
+                        {/*<CardProduct/>*/}
                     </Col>
                 </Row>
             </Container>

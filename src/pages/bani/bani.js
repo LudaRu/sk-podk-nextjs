@@ -5,16 +5,18 @@ import CardProduct from "../../components/cardProduct/cardProduct";
 export default function BaniPage(props) {
     return (
         <>
-            <div className="pt-5 pb-3">
+            <div className="pt-3 pb-3">
                 <Container>
                     <Row>
                         <Col xs={12}>
-
+                            <h1>Каркасные бани</h1>
+                        </Col>
+                        <Col xs={12}>
                             <div>
                                 <div className="form-floating mb-3">
                                     <input type="email" className="form-control" id="floatingInput"
-                                           placeholder="name@example.com" />
-                                        <label htmlFor="floatingInput">Поиск</label>
+                                           placeholder="Поиск"/>
+                                    <label htmlFor="floatingInput">Поиск</label>
                                 </div>
                             </div>
                             <div className="d-flex flex-wrap">

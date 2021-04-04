@@ -7,7 +7,6 @@ export default function Bani() {
             <Head>
                 <title>Бани под ключ</title>
             </Head>
-            <BaniPage/>
         </>
     )
 }
