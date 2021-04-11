@@ -9,7 +9,7 @@ $info: #1771e6;
 $warning: #ff9b37;
 //$light: #eef0f2;
 $light: #f5f5f6;
-$dark: #3c4055;
+$dark: #000;
 $body-bg: #ffffff;
 
 //background: #16df7e;
@@ -24,14 +24,14 @@ $input-focus-bg: #fff;
 $form-check-input-checked-color: $dark;
 $form-check-input-width: 1.5em;
 //$form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/></svg>") !default;
-$form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.293 8.293l-6.294 6.294c.001-.001-2.292-2.294-2.292-2.294a1 1 0 00-1.414 1.414l2.294 2.294c.78.78 2.05.777 2.826 0l6.294-6.294a1 1 0 10-1.414-1.414z' fill='currentColor'></path></svg>") !default;
-$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.293 8.293l-6.294 6.294c.001-.001-2.292-2.294-2.292-2.294a1 1 0 00-1.414 1.414l2.294 2.294c.78.78 2.05.777 2.826 0l6.294-6.294a1 1 0 10-1.414-1.414z' fill='currentColor'></path></svg>") !default;
+$form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.293 8.293l-6.294 6.294c.001-.001-2.292-2.294-2.292-2.294a1 1 0 00-1.414 1.414l2.294 2.294c.78.78 2.05.777 2.826 0l6.294-6.294a1 1 0 10-1.414-1.414z' fill='currentColor'></path></svg>") !default;
+$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16.293 8.293l-6.294 6.294c.001-.001-2.292-2.294-2.292-2.294a1 1 0 00-1.414 1.414l2.294 2.294c.78.78 2.05.777 2.826 0l6.294-6.294a1 1 0 10-1.414-1.414z' fill='currentColor'></path></svg>") !default;
 
 
 @import "~bootstrap/scss/functions";
 
-$navbar-light-color:                rgba($dark, 1) !default;
-$navbar-light-hover-color:          rgba($dark, .7) !default;
+$navbar-light-color: rgba($dark, 1) !default;
+$navbar-light-hover-color: rgba($dark, .7) !default;
 
 
 $badge-font-weight: 500;
@@ -60,7 +60,6 @@ $spacers: (
 @import "~bootstrap/scss/variables";
 
 
-
 @import "~bootstrap/scss/mixins/_breakpoints";
 @import "~bootstrap/scss/bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
@@ -71,9 +70,25 @@ $spacers: (
 body, html, #__next {
   height: 100%;
 }
+
 .text-grey {
   color: #6c757d;
 }
+
+.text-cross {
+  position: relative;
+  &:after {
+    content: "";
+    left: 0;
+    margin-top: calc(0.125em / 2 * -1);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    border-top: 2.5px solid $dark;
+    transform: matrix(0.99, -0.15, 0.14, 0.99, 0, 0);
+  }
+}
+
 
 .bg-primary, .bg-secondary {
   color: $dark;
@@ -127,9 +142,8 @@ body {
 }
 
 .cpoint {
- cursor: pointer;
+  cursor: pointer;
 }
-
 
 
 .banner {
@@ -149,6 +163,7 @@ body {
   top: 25vh;
   right: 80%;
 }
+
 .advantagesLeft {
   z-index: -2;
   width: 380px;

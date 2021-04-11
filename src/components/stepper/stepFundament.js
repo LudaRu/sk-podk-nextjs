@@ -19,7 +19,7 @@ export function StepFundament({fundament}) {
 
     fundament.forEach(el => list.push({
         title: <><span className="badge bg-primary fw-bold">+{el.price.toLocaleString()} ₽</span></>,
-        description: <div>{el.name} </div>
+        description: <div>{el.name}</div>
     }))
 
     return <>

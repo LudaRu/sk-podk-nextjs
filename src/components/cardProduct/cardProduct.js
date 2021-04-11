@@ -19,7 +19,7 @@ export default function CardProduct({bania}) {
                         className="rounded"
                         src={API_URL + bania.plan_3d.url}
                         layout="fill"
-                        objectFit="cover"
+                        objectFit="contain"
                         sizes="
                         (min-width: 360px) 360px,
                         (min-width: 576px) 640px,
@@ -27,14 +27,6 @@ export default function CardProduct({bania}) {
                         (min-width: 992px) 1000px
                         "
                     />
-                    {/*<Image*/}
-                    {/*    className="rounded"*/}
-                    {/*    width={bania.plan_3d.width}*/}
-                    {/*    height={bania.plan_3d.height}*/}
-                    {/*    src={API_URL + bania.plan_3d.url}*/}
-                    {/*    layout="responsive"*/}
-                    {/*    // objectFit="cover"*/}
-                    {/*/>*/}
                 </div>
             </a>
         </Link>
@@ -55,7 +47,7 @@ export default function CardProduct({bania}) {
                 <div>
                     <div className="pb-2">
                         {/*<div className="d-flex">*/}
-                        {/*    <del className="text-muted"> {Number(150000).toLocaleString()}</del>*/}
+                        {/*    <div className="text-muted text-cross"> {Number(150000).toLocaleString()}</div>*/}
                         {/*    <div className="bg-primary rounded-1 px-2 ms-2 fw-bolder"> -{Number(12000).toLocaleString()}</div>*/}
                         {/*</div>*/}
                         <div className="h5 fw-bold"><small>от</small> {Number(bania.price_1).toLocaleString()} ₽</div>
