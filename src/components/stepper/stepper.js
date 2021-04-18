@@ -4,7 +4,7 @@ import css from "./footer.module.scss";
 import {Col, Container, Row} from "react-bootstrap";
 import {useRouter} from 'next/router'
 
-export default function Stepper({children, price, step, onStepChange, onNext, onBack, onClose}) {
+export default function Stepper({children, price, step, onStepChange, onNext, onBack, onClose, curValid}) {
     const [SW, setSW] = useState();
 
     useEffect(() => {
@@ -56,12 +56,12 @@ export default function Stepper({children, price, step, onStepChange, onNext, on
                     <Row>
                         <Col xs={12}>
                             <div className={css.footer}>
-                                <div
+                                <div style={{marginLeft: '-12px'}}
                                     className="d-flex align-items-center h5 mb-0 bg-primary text-dark px-4">{Number(price).toLocaleString()} ₽
                                 </div>
                                 <div className="py-2">
                                     <button className="btn btn-primary shadow" onClick={() => onNext(SW)}>
-                                        Далее
+                                        Далее {curValid ? 'ОК' : 'НЕНЕ'}
                                     </button>
                                 </div>
                             </div>

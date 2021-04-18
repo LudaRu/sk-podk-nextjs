@@ -2,16 +2,10 @@ import React, {useState} from "react";
 import {Accordion, Col, useAccordionButton} from "react-bootstrap";
 import Image from "next/image";
 
-export default function ImgSelector({list, one}) {
-    const [activeId, setActiveId] = useState()
-
-    const onClick = (i) => {
-        setActiveId(i)
-    }
+export default function ImgSelector({list, checked= {}, onChecked}) {
 
     function CustomToggle({children, eventKey}) {
-        const decoratedOnClick = useAccordionButton(eventKey, () => {
-        });
+        const decoratedOnClick = useAccordionButton(eventKey, () => {});
 
         return (
             <div className=" text-center"  onClick={decoratedOnClick}>
@@ -22,10 +16,10 @@ export default function ImgSelector({list, one}) {
 
 
     return <>
-        {list.map(({title, description, more, img}, i) => (
+        {list.map(({title, description, more, img, price, name}, i) => (
             <Col xs={12} md={4}>
             <div key={i} className="mb-3 border border-1 rounded bg-white  position-relative">
-                <div  onClick={() => onClick(i)}>
+                <div  onClick={() => onChecked(name, price)}>
                 <div className="ratio ratio-4x3 cpoint">
                     <Image
                         className="rounded"
@@ -38,8 +32,13 @@ export default function ImgSelector({list, one}) {
                 <div className="p-3">
                     {title}
                 </div>
-                <input className="form-check-input position-absolute cpoint" style={{top: '1rem', right: '1rem'}} type="radio" value=""
-                       checked={i === activeId} onChange={() => {}}/>
+                <input
+                    className="form-check-input position-absolute cpoint"
+                    style={{top: '1rem', right: '1rem'}} type="radio"
+                    value=""
+                    checked={name === checked.name}
+                    onChange={() => onChecked(name, price)}
+                />
                 </div>
                 {more ? <div className=" border-1 border-top py-3">
                     <Accordion>
