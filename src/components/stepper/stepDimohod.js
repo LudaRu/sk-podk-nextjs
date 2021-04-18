@@ -1,22 +1,42 @@
-import React from "react";
-import ListGroup from "../forms/ListGroup";
+import React, {useState} from "react";
+import CheckBoxGroup from "../forms/ChekBoxItem";
+
+export default function stepDimohod(data) {
+    const [checked, setChecked] = useState({})
+
+    return {
+        component: <StepDimohodC data={data} checked={checked} setChecked={setChecked}/>,
+        checked: checked,
+        setChecked: setChecked,
+        onNext: (SW) => checked.name && SW.nextStep(),
+    }
+}
 
 /**
  *
- * @param {Kits.печное.дымоход} dimohod
+ * @param {Kits.печное.дымоход} data
+ * @param checked
+ * @param setChecked
  * @returns {JSX.Element}
  * @constructor
  */
-export function StepDimohod({dimohod}) {
-    const list = []
+function StepDimohodC({data, checked, setChecked}) {
 
-    dimohod.forEach(el => list.push({
-        title: <><span className="badge bg-primary fw-bold">+{el.price.toLocaleString()} ₽</span></>,
-        description: <div>{el.name} </div>
+    const list = [{
+        name: 'нет',
+        price: 0,
+        img: '',
+        shortDesc: 'Свой фундамент'
+    }]
+    data.forEach(el => list.push({
+        name: el.name,
+        price: el.price,
+        img: '',
+        shortDesc: el.name,
     }))
 
     return <>
         <h3 className="mb-4 text-center">Дымоход</h3>
-        <ListGroup list={list}/>
+        <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>
     </>
 }

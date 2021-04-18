@@ -1,33 +1,42 @@
-import React from "react";
-import ListGroup from "../forms/ListGroup";
+import React, {useState} from "react";
+import CheckBoxGroup from "../forms/ChekBoxItem";
+
+export default function stepBak(data) {
+    const [checked, setChecked] = useState({})
+
+    return {
+        component: <StepBakC data={data} checked={checked} setChecked={setChecked}/>,
+        checked: checked,
+        setChecked: setChecked,
+        onNext: (SW) => checked.name && SW.nextStep(),
+    }
+}
 
 /**
  *
- * @param {Kits.печное.бак} bak
- * @param {Kits.печное.обустройство} obustroy
+ * @param {Kits.печное.бак} fundament
+ * @param checked
+ * @param setChecked
  * @returns {JSX.Element}
  * @constructor
  */
-export function StepBak({bak, obustroy}) {
-    const list = []
+function StepBakC({data, checked, setChecked}) {
 
-    bak.forEach(el => list.push({
-        title: <><span className="badge bg-primary fw-bold">+{el.price.toLocaleString()} ₽</span></>,
-        description: <div>{el.name} </div>
-    }))
-
-    const list2 = []
-
-    obustroy.forEach(el => list2.push({
-        title: <><span className="badge bg-primary fw-bold">+{el.price.toLocaleString()} ₽</span></>,
-        description: <div>{el.name} </div>
+    const list = [{
+        name: 'нет',
+        price: 0,
+        img: '',
+        shortDesc: 'Свой фундамент'
+    }]
+    data.forEach(el => list.push({
+        name: el.name,
+        price: el.price,
+        img: '',
+        shortDesc: el.name,
     }))
 
     return <>
-        <h3 className="mb-4 text-center">Установка печного оборудования</h3>
-        <ListGroup list={list2}/>
-
-        <h3 className="my-4 text-center">Бак для воды</h3>
-        <ListGroup list={list}/>
+        <h3 className="mb-4 text-center">Бак для воды</h3>
+        <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>
     </>
 }

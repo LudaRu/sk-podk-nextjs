@@ -1,22 +1,37 @@
-import React from "react";
-import ListGroup from "../forms/ListGroup";
+import React, {useState} from "react";
+import CheckBoxGroup from "../forms/ChekBoxItem";
+
+export default function stepFireSave(data) {
+    const [checked, setChecked] = useState({})
+
+    return {
+        component: <StepFireSaveC data={data} checked={checked} setChecked={setChecked}/>,
+        checked: checked,
+        setChecked: setChecked,
+        onNext: (SW) => checked.name && SW.nextStep(),
+    }
+}
 
 /**
  *
  * @param {Kits.пожарная} data
+ * @param checked
+ * @param setChecked
  * @returns {JSX.Element}
  * @constructor
  */
-export function StepFireSave({data}) {
-    const list = []
+function StepFireSaveC({data, checked, setChecked}) {
 
+    const list = []
     data.forEach(el => list.push({
-        title: <><span className="badge bg-primary fw-bold">+{el.price.toLocaleString()} ₽</span></>,
-        description: <div>{el.name} </div>
+        name: el.name,
+        price: el.price,
+        img: '',
+        shortDesc: el.name,
     }))
 
     return <>
-        <h3 className="mb-4">Пожарная бпасность</h3>
-        <ListGroup list={list}/>
+        <h3 className="mb-4 text-center">Пожарная безопасность</h3>
+        <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>
     </>
 }

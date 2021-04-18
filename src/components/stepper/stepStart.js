@@ -2,20 +2,30 @@ import {Col, Row} from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 
+export default function stepStart(project) {
+    return {
+        component: <StepStart project={project}/>,
+        onNext: (SW) => SW.nextStep(),
+    }
+}
+
 /**
  *
  * @param {Bani} project
  * @returns {JSX.Element}
  * @constructor
  */
-export function StepStart({project}) {
+function StepStart({project}) {
     return <>
         <div className="shadow-sm rounded-3 bg-white p-3">
             <Row>
                 <Col xs={12}>
                     <div className="d-flex">
-                        <h1 className="mb-4 h4">Каркасная баня {project.opt_size_bani_w}x{project.opt_size_bani_h}</h1>
-                        <div className="bg-primary h5 mb-4 ms-2 p-1 rounded">{Number(project.price_1).toLocaleString()} ₽</div>
+                        <h1 className="mb-4 h4">Каркасная
+                            баня {project.opt_size_bani_w}x{project.opt_size_bani_h}</h1>
+                        <div
+                            className="bg-primary h5 mb-4 ms-2 p-1 rounded">{Number(project.price_1).toLocaleString()} ₽
+                        </div>
                     </div>
                 </Col>
                 <Col xs={12}>

@@ -4,13 +4,21 @@ import css from "./footer.module.scss";
 import {Col, Container, Row} from "react-bootstrap";
 import {useRouter} from 'next/router'
 
-export default function Stepper({children, price, step, onStepChange, onNext, onBack, onClose, curValid}) {
-    const [SW, setSW] = useState();
+export default function Stepper({stepPagers, price, step, onStepChange, onBack, onClose}) {
+    const [SW, setSW] = useState()
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [step])
 
+    function getNextButton() {
+        const btnText = stepPagers[step.activeStep-1].nextText || 'Далее';
+        const onNext = stepPagers[step.activeStep-1].onNext;
+
+        return  <button className="btn btn-primary shadow" onClick={() => onNext(SW)}>
+             {btnText}
+         </button>;
+    }
 
     return (
         <>
@@ -19,14 +27,14 @@ export default function Stepper({children, price, step, onStepChange, onNext, on
                     <div className="row">
                         <div className="col-12">
                             <div className="d-flex justify-content-between py-3">
-                                <a onClick={() => onBack(SW)} className="a cpoint">
+                                <a onClick={() => onBack()} className="a cpoint">
                                     <i className="bi bi-chevron-left"/> {step.activeStep > 1 ? 'Назад' : 'В каталог'}
                                 </a>
                                 <button
                                     type="button"
                                     className="btn-close"
                                     aria-label="Close"
-                                    onClick={() => onClose(SW)}
+                                    onClick={() => onClose()}
                                 />
                             </div>
                         </div>
@@ -44,7 +52,7 @@ export default function Stepper({children, price, step, onStepChange, onNext, on
                                     onStepChange={onStepChange}
                                     instance={SW => setSW(SW)}
                                 >
-                                    {children}
+                                    {stepPagers.map(({component}, i) => <React.Fragment key={i}>{component}</React.Fragment>)}
                                 </StepWizard>
                             </Col>
                         </Row>
@@ -60,9 +68,7 @@ export default function Stepper({children, price, step, onStepChange, onNext, on
                                     className="d-flex align-items-center h5 mb-0 bg-primary text-dark px-4">{Number(price).toLocaleString()} ₽
                                 </div>
                                 <div className="py-2">
-                                    <button className="btn btn-primary shadow" onClick={() => onNext(SW)}>
-                                        Далее {curValid ? 'ОК' : 'НЕНЕ'}
-                                    </button>
+                                    {getNextButton()}
                                 </div>
                             </div>
                         </Col>
@@ -72,3 +78,6 @@ export default function Stepper({children, price, step, onStepChange, onNext, on
         </>
     );
 }
+
+
+

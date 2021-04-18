@@ -1,52 +1,51 @@
 import {Row} from "react-bootstrap";
-import ImgSelector from "../forms/imgSelector";
-import React from "react";
+import React, {useState} from "react";
+import ChekImgGroup from "../forms/ChekImgItem";
+
+export default function stepPech(data) {
+    const [checked, setChecked] = useState({})
+
+    return {
+        component: <StepPechC data={data} checked={checked} setChecked={setChecked}/>,
+        checked: checked,
+        setChecked: setChecked,
+        onNext: (SW) => checked.name && SW.nextStep(),
+    }
+}
 
 /**
  *
- * @param {Kits.печное.печь} pech
+ * @param {Kits.печное.печь} data
  * @returns {JSX.Element}
  * @constructor
  */
-export function StepPech({pech}) {
+function StepPechC({data, checked, setChecked}) {
+    const list = [{
+        name: 'Без печки',
+        price: 0,
+        img: '',
+        shortDesc: 'Свой фундамент'
+    }]
 
-    const list1 = [
-        {
-            img: '/img/Kukish_or_fig.jpeg',
-            title: <>
-                <h5><span className="badge bg-primary fw-bold">0 ₽</span></h5>
-                <div className="text-info">Без печки</div>
-            </>
-        },
-    ]
-
-    pech.сталь.forEach(el => list1.push({
-        img: '/img/voevoda-15.png',
-        title: <>
-            <h5><span className="badge bg-primary fw-bold">+{el.price && el.price.toLocaleString()} ₽</span></h5>
-            <div className="text-info">{el.name} </div>
-        </>
+    data.чугун.forEach(el => list.push({
+        name: el.name,
+        price: el.price,
+        img: '',
+        shortDesc: el.name,
     }))
-
 
     const list2 = []
-    pech.чугун.forEach(el => list2.push({
-        img: '/img/voevoda-15.png',
-        title: <>
-            <h5><span className="badge bg-primary fw-bold">+{el.price && el.price.toLocaleString()} ₽</span></h5>
-            <div className="text-info">{el.name} </div>
-        </>
+    data.сталь.forEach(el => list2.push({
+        name: el.name,
+        price: el.price,
+        img: '',
+        shortDesc: el.name,
     }))
 
-    console.log(list1)
-    return <>
-        <h3 className="mb-4">Выберите печь</h3>
-
-        <Row>
-            <h5 className="text-center my-4">Чугунные</h5>
-            <ImgSelector list={list1}/>
-            <h5 className="text-center my-4">Стальные</h5>
-            <ImgSelector list={list2}/>
-        </Row>
-    </>
+    return <Row>
+        <h3 className="mb-4 text-center">Печи чугунные</h3>
+        <ChekImgGroup list={list} checked={checked} setChecked={setChecked}/>
+        <h3 className="mb-4 text-center">Печи стальные</h3>
+        <ChekImgGroup list={list} checked={checked} setChecked={setChecked}/>
+    </Row>
 }
