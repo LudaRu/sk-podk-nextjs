@@ -8,7 +8,7 @@ module.exports = withBundleAnalyzer({
     },
     images: {
         domains: ['xn----htbqcfpgn5dvd.xn--p1ai', 'localhost'],
-        deviceSizes: [200, 360, 640, 720, 960, 1140, 1320, 2000],
+        deviceSizes: [50, 200, 360, 640, 720, 960, 1140, 1320, 2000],
         // imageSizes: [16, 32, 48, 64, 96, 128],
     },
     future: {

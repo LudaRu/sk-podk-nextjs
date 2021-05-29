@@ -1,11 +1,15 @@
 import React, {useState} from "react";
-import CheckBoxGroup from "../forms/ChekBoxItem";
+import CheckBoxGroup from "../../forms/ChekBoxItem";
+const {API_URL} = process.env
 
-export default function stepBak(data) {
+export default function stepFund(data, baniSelectors) {
     const [checked, setChecked] = useState({})
 
+    console.log(data)
+    console.log(baniSelectors)
+
     return {
-        component: <StepBakC data={data} checked={checked} setChecked={setChecked}/>,
+        component: <StepFundamentC data={data} checked={checked} setChecked={setChecked}/>,
         checked: checked,
         setChecked: setChecked,
         onNext: (SW) => checked.name && SW.nextStep(),
@@ -14,13 +18,13 @@ export default function stepBak(data) {
 
 /**
  *
- * @param {Kits.печное.бак} fundament
+ * @param {Kits.фундамент} fundament
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
  * @constructor
  */
-function StepBakC({data, checked, setChecked}) {
+function StepFundamentC({data, checked, setChecked}) {
 
     const list = [{
         name: 'нет',
@@ -31,12 +35,14 @@ function StepBakC({data, checked, setChecked}) {
     data.forEach(el => list.push({
         name: el.name,
         price: el.price,
-        img: '',
-        shortDesc: el.name,
+        img: el.img,
+        shortDesc: el.short_desk,
+        more: el.more,
+        id: el.id,
     }))
-
+console.log(data)
     return <>
-        <h3 className="mb-4 text-center">Бак для воды</h3>
+        <h3 className="mb-4 text-center">Фундамент</h3>
         <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>
     </>
 }

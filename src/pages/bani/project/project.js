@@ -1,16 +1,16 @@
 import React, {Fragment, useEffect, useState} from "react";
 import Stepper from "../../../components/stepper/stepper";
-import stepStart from "../../../components/stepper/stepStart";
-import stepFund from "../../../components/stepper/stepFundament";
-import stepOtdelka from "../../../components/stepper/stepOtdelka";
-import stepPech from "../../../components/stepper/stepPech";
-import stepBak from "../../../components/stepper/stepBak";
-import stepFireSave from "../../../components/stepper/StepFireSave";
-import stepDimohod from "../../../components/stepper/StepDimohod";
-import stepObustroistvo from "../../../components/stepper/stepObustroistvo";
-import viewKit from "../../../components/stepper/viewKit";
-import stepFinal from "../../../components/stepper/stepFinal";
-import stepOrderForm from "../../../components/stepper/stepOrderForm";
+import stepStart from "../../../components/stepper/karkas/stepStart";
+import stepFund from "../../../components/stepper/karkas/stepFundament";
+import stepOtdelka from "../../../components/stepper/karkas/stepOtdelka";
+import stepPech from "../../../components/stepper/karkas/stepPech";
+import stepBak from "../../../components/stepper/karkas/stepBak";
+import stepFireSave from "../../../components/stepper/karkas/stepFireSave";
+import stepDimohod from "../../../components/stepper/karkas/stepDimohod";
+import stepObustroistvo from "../../../components/stepper/karkas/stepObustroistvo";
+import viewKit from "../../../components/stepper/karkas/viewKit";
+import stepFinal from "../../../components/stepper/karkas/stepFinal";
+import stepOrderForm from "../../../components/stepper/karkas/stepOrderForm";
 import {useRouter} from "next/router";
 
 
@@ -29,7 +29,17 @@ export default function ProjectPage({project}) {
         setStep(step)
     }
 
-    function onBack() {
+    function onBack(SW) {
+        console.log(step)
+        if (step.activeStep === 1) {
+            router.back()
+            return
+        } else if (step.activeStep === 9 && stepPagers[3].checked.name === 'Без печки') {
+            SW.goToStep(4)
+            return
+        }
+
+        SW.previousStep();
     }
 
     function onClose() {
@@ -37,7 +47,6 @@ export default function ProjectPage({project}) {
     }
 
     const stepPagers = [
-        stepOrderForm(),
         stepStart(project),
         stepFund(project.kits.фундамент),
         stepOtdelka(project.kits.отделка),
@@ -47,7 +56,7 @@ export default function ProjectPage({project}) {
         stepFireSave(project.kits.пожарная),
         stepObustroistvo(project.kits.печное.обустройство),
         viewKit(),
-
+        stepOrderForm(),
         stepFinal(),
     ];
 

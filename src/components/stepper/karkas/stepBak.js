@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import CheckBoxGroup from "../forms/ChekBoxItem";
+import CheckBoxGroup from "../../forms/ChekBoxItem";
 
-export default function stepDimohod(data) {
+export default function stepBak(data) {
     const [checked, setChecked] = useState({})
 
     return {
-        component: <StepDimohodC data={data} checked={checked} setChecked={setChecked}/>,
+        component: <StepBakC data={data} checked={checked} setChecked={setChecked}/>,
         checked: checked,
         setChecked: setChecked,
         onNext: (SW) => checked.name && SW.nextStep(),
@@ -14,13 +14,13 @@ export default function stepDimohod(data) {
 
 /**
  *
- * @param {Kits.печное.дымоход} data
+ * @param {Kits.печное.бак} fundament
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
  * @constructor
  */
-function StepDimohodC({data, checked, setChecked}) {
+function StepBakC({data, checked, setChecked}) {
 
     const list = [{
         name: 'нет',
@@ -36,7 +36,7 @@ function StepDimohodC({data, checked, setChecked}) {
     }))
 
     return <>
-        <h3 className="mb-4 text-center">Дымоход</h3>
+        <h3 className="mb-4 text-center">Бак для воды</h3>
         <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>
     </>
 }

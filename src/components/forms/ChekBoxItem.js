@@ -1,9 +1,13 @@
 import React, {useContext, useState} from "react";
 import {Accordion, AccordionContext, useAccordionButton} from "react-bootstrap";
+import Image from "next/image";
+
+const {API_URL} = process.env
 
 function CustomToggle({children, eventKey}) {
     const curEvent = useContext(AccordionContext);
-    const decoratedOnClick = useAccordionButton(eventKey, () => {});
+    const decoratedOnClick = useAccordionButton(eventKey, () => {
+    });
     const isCur = curEvent.activeEventKey === eventKey;
     return (
         <a className="cpoint icon-link" onClick={decoratedOnClick}>
@@ -41,7 +45,14 @@ function ChekBoxItem({name, price, img, shortDesc, more, onChecked, checkedName}
                 <div className="d-flex gap-2" style={{flex: '1 1 auto'}}>
                     <div style={{flex: '0 0 50px'}}>
                         <div className="ratio ratio-1x1 bg-secondary rounded border">
-                            {img}
+                            {img && img.url &&
+                            <Image
+                                className="rounded"
+                                src={API_URL + img.url}
+                                layout="fill"
+                                objectFit="cover"
+                                sizes="(min-width: 50) 50px,"
+                            />}
                         </div>
                     </div>
                     <div className="d-flex flex-column justify-content-between h-100" style={{flex: '1 1 auto'}}>

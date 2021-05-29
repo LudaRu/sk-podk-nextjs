@@ -15,12 +15,29 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-    let res = await fetch(`http://localhost:1337/banis?slug=${params.slug}`)
-    res = await res.json()
+    let res1 = await fetch(`http://localhost:1337/banis?slug=${params.slug}`)
+    let res2 = await fetch(`http://localhost:1337/bani-selectors`)
+    res1 = await res1.json()
+    res2 = await res2.json()
+
+    // res1[0].kits.фундамент
+    res1[0].kits.фундамент.forEach(el => {
+        res2.forEach(item => {
+            if (el.name.toUpperCase().replace(/\s/g, '') === item.key.toUpperCase().replace(/\s/g, '')) {
+                el.id = item.id
+                el.img = item.img
+                el.name = item.name
+                el.key = item.key
+                el.more = item.more
+                el.short_desk = item.short_desk
+            }
+        })
+
+    })
 
     return {
         props: {
-            project: res[0]
+            project: res1[0],
         },
     }
 }

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import CheckBoxGroup from "../forms/ChekBoxItem";
+import CheckBoxGroup from "../../forms/ChekBoxItem";
 
 export default function stepFireSave(data) {
     const [checked, setChecked] = useState({})

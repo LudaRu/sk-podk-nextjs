@@ -1,3 +1,15 @@
+export interface BaniSelectors {
+    id: number;
+    key: string;
+    name: string;
+    short_desk: string;
+    more?: any;
+    created_at: Date;
+    updated_at: Date;
+    img: Image;
+}
+
+
 export interface BaniCategory {
     id: number;
     name: string;
@@ -89,13 +101,13 @@ interface Image {
 
 
 interface Formats {
-    large: Large;
-    small: Large;
-    medium: Large;
-    thumbnail: Large;
+    large: Thumbnail;
+    small: Thumbnail;
+    medium: Thumbnail;
+    thumbnail: Thumbnail;
 }
 
-interface Large {
+interface Thumbnail {
     ext: string;
     url: string;
     hash: string;
@@ -106,4 +118,3 @@ interface Large {
     width: number;
     height: number;
 }
-

@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import CheckBoxGroup from "../forms/ChekBoxItem";
+import CheckBoxGroup from "../../forms/ChekBoxItem";
 
-export default function stepObustroistvo(data) {
+export default function stepDimohod(data) {
     const [checked, setChecked] = useState({})
 
     return {
-        component: <StepObustroistvoC data={data} checked={checked} setChecked={setChecked}/>,
+        component: <StepDimohodC data={data} checked={checked} setChecked={setChecked}/>,
         checked: checked,
         setChecked: setChecked,
         onNext: (SW) => checked.name && SW.nextStep(),
@@ -14,15 +14,20 @@ export default function stepObustroistvo(data) {
 
 /**
  *
- * @param {Kits.печное.обустройство} data
+ * @param {Kits.печное.дымоход} data
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
  * @constructor
  */
-function StepObustroistvoC({data, checked, setChecked}) {
+function StepDimohodC({data, checked, setChecked}) {
 
-    const list = []
+    const list = [{
+        name: 'нет',
+        price: 0,
+        img: '',
+        shortDesc: 'Свой фундамент'
+    }]
     data.forEach(el => list.push({
         name: el.name,
         price: el.price,
@@ -31,7 +36,7 @@ function StepObustroistvoC({data, checked, setChecked}) {
     }))
 
     return <>
-        <h3 className="mb-4 text-center">Установка печи</h3>
+        <h3 className="mb-4 text-center">Дымоход</h3>
         <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>
     </>
 }

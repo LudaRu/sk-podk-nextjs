@@ -1,6 +1,6 @@
 import {Row} from "react-bootstrap";
 import React, {useState} from "react";
-import ChekImgGroup from "../forms/ChekImgItem";
+import ChekImgGroup from "../../forms/ChekImgItem";
 
 export default function stepPech(data) {
     const [checked, setChecked] = useState({})
@@ -9,7 +9,16 @@ export default function stepPech(data) {
         component: <StepPechC data={data} checked={checked} setChecked={setChecked}/>,
         checked: checked,
         setChecked: setChecked,
-        onNext: (SW) => checked.name && SW.nextStep(),
+        onNext: (SW) => {
+            if (checked.name) {
+                console.log(checked.name)
+                if (checked.name === 'Без печки') {
+                    SW.goToStep(9)
+                } else  {
+                    SW.nextStep()
+                }
+            }
+        },
     }
 }
 
@@ -46,6 +55,6 @@ function StepPechC({data, checked, setChecked}) {
         <h3 className="mb-4 text-center">Печи чугунные</h3>
         <ChekImgGroup list={list} checked={checked} setChecked={setChecked}/>
         <h3 className="mb-4 text-center">Печи стальные</h3>
-        <ChekImgGroup list={list} checked={checked} setChecked={setChecked}/>
+        <ChekImgGroup list={list2} checked={checked} setChecked={setChecked}/>
     </Row>
 }

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import StepWizard from 'react-step-wizard';
-import css from "./footer.module.scss";
 import {Col, Container, Row} from "react-bootstrap";
-import {useRouter} from 'next/router'
+import css from './stepper.module.scss'
 
 export default function Stepper({stepPagers, price, step, onStepChange, onBack, onClose}) {
     const [SW, setSW] = useState()
@@ -15,9 +14,19 @@ export default function Stepper({stepPagers, price, step, onStepChange, onBack, 
         const btnText = stepPagers[step.activeStep-1].nextText || 'Далее';
         const onNext = stepPagers[step.activeStep-1].onNext;
 
-        return  <button className="btn btn-primary shadow" onClick={() => onNext(SW)}>
+        const params = stepPagers[step.activeStep-1].nextParams || ''
+
+        return  <button {...params} className="btn btn-primary shadow" onClick={() => onNext(SW)}>
              {btnText}
          </button>;
+    }
+
+    const transitions = {
+        enterRight: css.enterRight,
+        enterLeft: css.enterLeft,
+        exitRight: css.exitRight,
+        exitLeft: css.exitLeft,
+        intro: css.intro,
     }
 
     return (
@@ -27,7 +36,7 @@ export default function Stepper({stepPagers, price, step, onStepChange, onBack, 
                     <div className="row">
                         <div className="col-12">
                             <div className="d-flex justify-content-between py-3">
-                                <a onClick={() => onBack()} className="a cpoint">
+                                <a onClick={() => onBack(SW)} className="a cpoint">
                                     <i className="bi bi-chevron-left"/> {step.activeStep > 1 ? 'Назад' : 'В каталог'}
                                 </a>
                                 <button
@@ -49,17 +58,18 @@ export default function Stepper({stepPagers, price, step, onStepChange, onBack, 
                                 <StepWizard
                                     className="pt-4"
                                     isLazyMount
+                                    transitions={transitions}
                                     onStepChange={onStepChange}
                                     instance={SW => setSW(SW)}
                                 >
-                                    {stepPagers.map(({component}, i) => <React.Fragment key={i}>{component}</React.Fragment>)}
+                                    {stepPagers.map(({component}, i) => component)}
                                 </StepWizard>
                             </Col>
                         </Row>
                     </Container>
                 </div>
             </div>
-            <div className={[css.root]}>
+            <div className={css.root}>
                 <Container style={{maxWidth: '900px', margin: '0 auto'}}>
                     <Row>
                         <Col xs={12}>
