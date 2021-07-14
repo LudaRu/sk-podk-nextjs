@@ -13,7 +13,7 @@ export default function viewKit(data) {
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function VewKitC({data, checked, setChecked}) {
     return <>

@@ -20,14 +20,15 @@ function CustomToggle({children, eventKey}) {
 }
 
 export default function CheckBoxGroup({list, checked, setChecked}) {
-    return list.map(({name, price, img, shortDesc, more}) =>
-        <React.Fragment key={name}>
+    return list.map((el) =>
+        <React.Fragment key={el.name}>
             <ChekBoxItem
-                name={name}
-                price={price}
-                img={img}
-                shortDesc={shortDesc}
-                more={more}
+                name={el.name}
+                price={el.price}
+                img={el.img}
+                shortDesc={el.shortDesc}
+                more={el.more}
+                checkItem={el}
                 checkedName={checked.name}
                 onChecked={setChecked}
             />
@@ -35,26 +36,23 @@ export default function CheckBoxGroup({list, checked, setChecked}) {
     )
 }
 
-function ChekBoxItem({name, price, img, shortDesc, more, onChecked, checkedName}) {
-    return <div className="list-group-item p-0 mb-3 rounded">
-        <div className={`p-3 cpoint  list-group-item-action`}
-             aria-current="true"
-             onClick={() => onChecked({name, price})}
-        >
+function ChekBoxItem({name, price, img, shortDesc, more, onChecked, checkedName, checkItem}) {
+    return <div className="p-0 mb-3 rounded border bg-light">
+        <div className="p-3 cpoint" onClick={() => onChecked(checkItem)}>
             <div className="d-flex w-100 justify-content-between">
                 <div className="d-flex gap-2" style={{flex: '1 1 auto'}}>
-                    <div style={{flex: '0 0 50px'}}>
+                    {img && img.url && <div style={{flex: '0 0 50px'}}>
                         <div className="ratio ratio-1x1 bg-secondary rounded border">
-                            {img && img.url &&
                             <Image
                                 className="rounded"
                                 src={API_URL + img.url}
                                 layout="fill"
                                 objectFit="cover"
                                 sizes="(min-width: 50) 50px,"
-                            />}
+                            />
                         </div>
                     </div>
+                    }
                     <div className="d-flex flex-column justify-content-between h-100" style={{flex: '1 1 auto'}}>
                         <h6 className="text-info">{name}</h6>
                         {price !== undefined && <h5 className="text-info mb-0">
@@ -68,7 +66,7 @@ function ChekBoxItem({name, price, img, shortDesc, more, onChecked, checkedName}
                         type="checkbox" value=""
                         id="flexCheckChecked"
                         checked={name === checkedName}
-                        onChange={() => onChecked({name, price})}
+                        onChange={() => onChecked(checkItem)}
                     />
                 </div>
             </div>

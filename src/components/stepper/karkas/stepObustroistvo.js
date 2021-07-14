@@ -18,7 +18,7 @@ export default function stepObustroistvo(data) {
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function StepObustroistvoC({data, checked, setChecked}) {
 

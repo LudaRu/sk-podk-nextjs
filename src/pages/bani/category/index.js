@@ -6,7 +6,7 @@ import CardProduct from "../../../components/cardProduct/cardProduct";
  *
  * @param {BaniCategory} category
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 export default function CategoryPage({category}) {
     return (

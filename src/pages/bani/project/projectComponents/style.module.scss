@@ -1,0 +1,24 @@
+.root {
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: hsla(0,0%,100%,.5);
+  border-top: 1px solid #dfdfdf;
+  color: #fff;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+.footer {
+  //padding: 10px 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    display: inline-block;
+    animation: wiggle 2.5s;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

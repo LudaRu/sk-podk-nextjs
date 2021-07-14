@@ -18,7 +18,7 @@ export default function stepFund(data) {
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function StepOtdelka({data, checked, setChecked}) {
 

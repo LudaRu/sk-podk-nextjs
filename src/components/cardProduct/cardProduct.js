@@ -8,7 +8,7 @@ const {API_URL} = process.env
  *
  * @param {Bani} bania
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 export default function CardProduct({bania}) {
     return bania.plan_3d && <div className="mb-4 bg-white rounded shadow">

@@ -105,29 +105,6 @@
 
 
 
-.root {
-  background: linear-gradient(225deg, #4d5869, #707c92);
-  color: #fff;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  z-index: 2;
-}
-
-.footer {
-  //padding: 10px 0;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-
-  button {
-    display: inline-block;
-    animation: wiggle 2.5s;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
 
 @keyframes wiggle {
   0% { transform: rotate(0deg); }

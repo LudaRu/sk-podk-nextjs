@@ -5,9 +5,6 @@ const {API_URL} = process.env
 export default function stepFund(data, baniSelectors) {
     const [checked, setChecked] = useState({})
 
-    console.log(data)
-    console.log(baniSelectors)
-
     return {
         component: <StepFundamentC data={data} checked={checked} setChecked={setChecked}/>,
         checked: checked,
@@ -22,7 +19,7 @@ export default function stepFund(data, baniSelectors) {
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function StepFundamentC({data, checked, setChecked}) {
 
@@ -40,7 +37,7 @@ function StepFundamentC({data, checked, setChecked}) {
         more: el.more,
         id: el.id,
     }))
-console.log(data)
+
     return <>
         <h3 className="mb-4 text-center">Фундамент</h3>
         <CheckBoxGroup list={list} checked={checked} setChecked={setChecked}/>

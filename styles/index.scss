@@ -58,7 +58,8 @@ $spacers: (
 ) !default;
 
 @import "~bootstrap/scss/variables";
-
+$ig-blue: $primary;
+@import "./image-gallery.scss";
 
 @import "~bootstrap/scss/mixins/_breakpoints";
 @import "~bootstrap/scss/bootstrap";
@@ -66,6 +67,10 @@ $spacers: (
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+
+.btn-secondary {
+  color: $info;
+}
 
 body, html, #__next {
   height: 100%;

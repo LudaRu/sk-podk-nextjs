@@ -11,19 +11,21 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^10.2.3",
+    "@next/bundle-analyzer": "^11.0.1",
     "@reduxjs/toolkit": "^1.6.0",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.5.0",
+    "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
     "formik": "^2.2.9",
-    "next": "10.2.3",
+    "next": "11.0.1",
     "node-sass": "^5.0.0",
     "react": "17.0.2",
-    "react-bootstrap": "^2.0.0-beta.0",
+    "react-bootstrap": "^2.0.0-beta.2",
     "react-content-loader": "^6.0.3",
     "react-dadata": "^2.9.3",
     "react-dom": "17.0.2",
+    "react-image-gallery": "^1.1.1",
     "react-step-wizard": "^5.3.6",
     "yup": "^0.32.9"
   }

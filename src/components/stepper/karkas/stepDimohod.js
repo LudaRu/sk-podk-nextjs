@@ -18,7 +18,7 @@ export default function stepDimohod(data) {
  * @param checked
  * @param setChecked
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function StepDimohodC({data, checked, setChecked}) {
 

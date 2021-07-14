@@ -11,7 +11,6 @@ export default function stepPech(data) {
         setChecked: setChecked,
         onNext: (SW) => {
             if (checked.name) {
-                console.log(checked.name)
                 if (checked.name === 'Без печки') {
                     SW.goToStep(9)
                 } else  {
@@ -26,7 +25,7 @@ export default function stepPech(data) {
  *
  * @param {Kits.печное.печь} data
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function StepPechC({data, checked, setChecked}) {
     const list = [{

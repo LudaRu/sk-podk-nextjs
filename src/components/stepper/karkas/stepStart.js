@@ -15,7 +15,7 @@ export default function stepStart(project) {
  *
  * @param {Bani} project
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 function StepStart({project}) {
     return <>

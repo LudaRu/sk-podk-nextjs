@@ -36,16 +36,16 @@ function Navs() {
             <Row>
                 <Navbar collapseOnSelect expand="lg" className="bg-white">
                     <Navbar.Brand href="#home" className="d-flex justify-content-between">
-                        <div style={{width: '40px'}}>
-                            <Image
-                                width="1560"
-                                height="1190"
-                                src="/img/web-20180125012902790423-1560x1190.png"
-                                layout="responsive"
-                            />
-                        </div>
+                        {/*<div style={{width: '40px'}}>*/}
+                        {/*    <Image*/}
+                        {/*        width="1560"*/}
+                        {/*        height="1190"*/}
+                        {/*        src="/img/web-20180125012902790423-1560x1190.png"*/}
+                        {/*        layout="responsive"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                         <div className="ps-3 pe-3">
-                            лисичка-строитель
+                            логотип
                         </div>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
@@ -57,23 +57,23 @@ function Navs() {
                             <Link href="/bani" passHref>
                                 <Nav.Link href="#features">БАни</Nav.Link>
                             </Link>
-                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                <Link href="/bani" passHref>
-                                    <NavDropdown.Item>Action</NavDropdown.Item>
-                                </Link>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider/>
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
+                            {/*<NavDropdown title="Dropdown" id="collasible-nav-dropdown">*/}
+                            {/*    <Link href="/bani" passHref>*/}
+                            {/*        <NavDropdown.Item>Action</NavDropdown.Item>*/}
+                            {/*    </Link>*/}
+                            {/*    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>*/}
+                            {/*    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>*/}
+                            {/*    <NavDropdown.Divider/>*/}
+                            {/*    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>*/}
+                            {/*</NavDropdown>*/}
                         </Nav>
                         <Nav>
-                            <Link href="/bani" passHref>
-                                <Nav.Link>бани</Nav.Link>
-                            </Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                Dank memes
+                            <Nav.Link eventKey={2} href="#memes" className="text-danger">
+                                Акции
                             </Nav.Link>
+                            <Link href="/bani" passHref>
+                                <Nav.Link>Контакты</Nav.Link>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

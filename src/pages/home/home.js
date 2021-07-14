@@ -13,17 +13,17 @@ function UniqueOffer() {
                 Вы можите собрать полностью свою комплектацию от фундамента до крыши и увидеть полную сметную стоимость
                 на сайте
             </p>
-            <a href="#" className="btn btn-primary shadow-sm"><i className="bi bi-hammer"></i> Конструктор онлайн</a>
+            <a href="/constructor" className="btn btn-primary shadow-sm"><i className="bi bi-hammer"></i> Конструктор онлайн</a>
         </div>
 
-        {/*<div className="mb-4 p-3 bg-white rounded shadow-lg gr-sky text-white">*/}
-        {/*    <h5 className="mb-2 "><i className="bi bi-check-circle-fill pe-3 text-primary"></i>Посещение офиса*/}
-        {/*        необзательно</h5>*/}
-        {/*    <p className="mb-3">*/}
-        {/*        Оформить заказ и получить договор можно оналйн без выезда в офис*/}
-        {/*    </p>*/}
-        {/*    <a href="#" className="btn btn-primary shadow-sm">Как мы работаем</a>*/}
-        {/*</div>*/}
+        <div className="mb-4 p-3 bg-white rounded shadow-lg gr-sky text-white">
+            <h5 className="mb-2 "><i className="bi bi-check-circle-fill pe-3 text-primary"></i>Посещение офиса
+                необзательно</h5>
+            <p className="mb-3">
+                Оформить заказ и получить договор можно оналйн без выезда в офис
+            </p>
+            <a href="#" className="btn btn-primary shadow-sm">Как мы работаем</a>
+        </div>
 
     </div>;
 }
@@ -32,12 +32,12 @@ export default function HomePage({category}) {
     return <>
         <Container className="pt-4 mb-4">
             <Row>
-                <Col xs={12} md={6}>
+                <Col xs={12} lg={6}>
                     <h1 className="display-5 fw-normal text-uppercase">Каркасные бани <br/>под ключ</h1>
                     <div>Строим под ваши требования бани и прочие сооружения</div>
                     <UniqueOffer/>
                 </Col>
-                <Col>
+                <Col className="d-none d-lg-block">
                     <div className={css.banner}>
                         <Image
                             className={css.bannerImg}

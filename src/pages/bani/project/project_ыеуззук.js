@@ -18,7 +18,7 @@ import {useRouter} from "next/router";
  *
  * @param {Bani} project
  * @returns {JSX.Element}
- * @constructor
+ * @constructorBani
  */
 export default function ProjectPage_({project}) {
     const router = useRouter()
@@ -30,7 +30,6 @@ export default function ProjectPage_({project}) {
     }
 
     function onBack(SW) {
-        console.log(step)
         if (step.activeStep === 1) {
             router.back()
             return
