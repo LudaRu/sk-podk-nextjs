@@ -2,8 +2,10 @@ import Head from "next/head";
 import ProjectPage from "../../../src/pages/bani/project/project";
 import OnlyMain from "../../../src/layout/onlyMain";
 
+const {API_URL} = process.env
+
 export async function getStaticPaths() {
-    let res = await fetch(`http://localhost:1337/banis`)
+    let res = await fetch(`${API_URL}/banis`)
     res = await res.json()
 
     const paths = res.map((v) => `/bani/project/${v.slug}`);
@@ -15,8 +17,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-    let res1 = await fetch(`http://localhost:1337/banis?slug=${params.slug}`)
-    let res2 = await fetch(`http://localhost:1337/bani-selectors`)
+    let res1 = await fetch(`${API_URL}/banis?slug=${params.slug}`)
+    let res2 = await fetch(`${API_URL}/bani-selectors`)
     res1 = await res1.json()
     res2 = await res2.json()
 

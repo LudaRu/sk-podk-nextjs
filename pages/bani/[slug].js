@@ -1,8 +1,10 @@
 import Head from "next/head";
 import CategoryPage from "../../src/pages/bani/category";
 
+const {API_URL} = process.env
+
 export async function getStaticPaths() {
-    let res = await fetch(`http://localhost:1337/bani-categories`)
+    let res = await fetch(`${API_URL}/bani-categories`)
     res = await res.json()
 
     const paths = res.map((v) => `/bani/${v.slug}`);
@@ -14,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    let res = await fetch(`http://localhost:1337/bani-categories?slug=${params.slug}`);
+    let res = await fetch(`${API_URL}/bani-categories?slug=${params.slug}`);
     res = await res.json()
 
     return {

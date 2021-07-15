@@ -13,8 +13,10 @@ import HomePage from "../src/pages/home/home";
 //     }
 // }
 
+const {API_URL} = process.env
+
 export async function getStaticProps({ params }) {
-    let res = await fetch(`http://localhost:1337/bani-categories?slug=karkasnye-bani`);
+    let res = await fetch(`${API_URL}/bani-categories?slug=karkasnye-bani`);
     res = await res.json()
 
     return {

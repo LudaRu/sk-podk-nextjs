@@ -5,10 +5,14 @@ import css from "./style.module.scss";
 import KitItem from "./kitItem";
 import CheckBoxGroup from "../../../../components/forms/ChekBoxItem";
 import GalleryWrap from "../../../../components/gallery/galleryWrap";
+import Otdelka from "./otdelka";
 
 
 function formatOtdelka(data) {
     return [{
+        name: 'нет',
+        price: 0,
+    },{
         name: 'Комфорт',
         price: data.комфорт.price,
         shortDesc: [<div className="mt-4">{data.комфорт.items.map(row => (
@@ -92,7 +96,7 @@ export default function Index({project, setPrice}) {
         if (localStorage.getItem('karkasKit')) {
             const karkasKit = JSON.parse(localStorage.getItem('karkasKit'));
             setCheckFund((getStateFormat(karkasKit.checkFund, project.kits.фундамент)) || {})
-            setCheckOtdelka(getStateFormat(karkasKit.checkOtdelka, formatOtdelka(project.kits.отделка)) || {})
+            // setCheckOtdelka(getStateFormat(karkasKit.checkOtdelka, formatOtdelka(project.kits.отделка)) || {})
             setCheckPech(getStateFormat(karkasKit.checkPech, [...project.kits.печное.печь.сталь, ...project.kits.печное.печь.чугун]) || {})
             setCheckBac(getStateFormat(karkasKit.checkBac, project.kits.печное.бак) || {})
             setCheckDimo(getStateFormat(karkasKit.checkDimo, project.kits.печное.дымоход) || {})
@@ -101,25 +105,25 @@ export default function Index({project, setPrice}) {
         }
     }, [])
 
-    useEffect(() => {
-        let totalPrice = project.price_1;
-        [checkFund, checkOtdelka, checkPech, checkBac, checkDimo, checkPojar, checkObustr].forEach(el => {
-            if (el.price) {
-                totalPrice += el.price;
-            }
-        })
-        setPrice(totalPrice)
-        localStorage.setItem('karkasKit', JSON.stringify({
-            checkFund: checkFund.name,
-            checkOtdelka: checkOtdelka.name,
-            checkPech: checkPech.name,
-            checkBac: checkBac.name,
-            checkDimo: checkDimo.name,
-            checkPojar: checkPojar.name,
-            checkObustr: checkObustr.name,
-        }))
-
-    }, [checkFund, checkOtdelka, checkPech, checkBac, checkDimo, checkPojar, checkObustr])
+    // useEffect(() => {
+    //     let totalPrice = project.price_1;
+    //     [checkFund, checkOtdelka, checkPech, checkBac, checkDimo, checkPojar, checkObustr].forEach(el => {
+    //         if (el.price) {
+    //             totalPrice += el.price;
+    //         }
+    //     })
+    //     setPrice(totalPrice)
+    //     localStorage.setItem('karkasKit', JSON.stringify({
+    //         checkFund: checkFund.name,
+    //         checkOtdelka: checkOtdelka.name,
+    //         checkPech: checkPech.name,
+    //         checkBac: checkBac.name,
+    //         checkDimo: checkDimo.name,
+    //         checkPojar: checkPojar.name,
+    //         checkObustr: checkObustr.name,
+    //     }))
+    //
+    // }, [checkFund, checkOtdelka, checkPech, checkBac, checkDimo, checkPojar, checkObustr])
 
 
     return (<>
@@ -129,14 +133,13 @@ export default function Index({project, setPrice}) {
                     <h1 className="h4 mb-0">Каркасная баня {project.opt_size_bani_w}x{project.opt_size_bani_h}</h1>
                 </div>
 
-                <div className="">
-
-                </div>
-
-
                 <div className="shadow-sm bg-white rounded overflow-hidden mt-3">
                     <GalleryWrap images={[...project.images, project.plan_3d]}/>
-                    <h4 className="mt-4 px-4">Что входит в стоимость каркаса <small className="bg-primary h5 ms-2 mb-0 p-1 rounded">{Number(project.price_1).toLocaleString()} ₽</small></h4>
+                    <h5 className="text-muted p-3 m-4 mb-2 bg-secondary rounded">
+                        Каркас под крышей без отделки
+                        <small className="bg-primary h5 ms-2 mb-0 p-1 rounded">{Number(project.price_1).toLocaleString()} ₽</small>
+                    </h5>
+                    <h5 className="px-4">Что входит в стоимость</h5>
 
 
                     <div className="list-group list-group-flush">
@@ -177,58 +180,15 @@ export default function Index({project, setPrice}) {
                             <span className="fw-bold">Крепеж: </span>
                             <small>Опроы бруса, саморезы ,гвозди, скобы</small>
                         </div>
-                        <div  className="px-4 py-2">
-                            <span className="fw-bold">Антисептик Неомид: </span>
+                        <div  className="border-bottom px-4 py-2">
+                            <span className="fw-bold">Антисептик: </span>
                             <small>Антисептик для обработки обвязки и лаг пола
                                 от плесени синевы и гниения</small>
                         </div>
+                        <div  className="px-4 py-2">
+                            <span className="fw-bold">Сборка на учатке заказчика </span>
+                        </div>
                     </div>
-
-
-                    {/*<ul className="list-group list-group-flush">*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Нижняя Обвязка: </span>*/}
-                    {/*        <small>Брус 100х150 мм. Хвоя Ест. Влажности</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Лаги пола: </span>*/}
-                    {/*        <small>Доска 40х100мм. Ест. Влажности</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Каркас Стен: </span>*/}
-                    {/*        <small>Доска 40х100мм. Ест. Влажности</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Стропила Кровли: </span>*/}
-                    {/*        <small>Доска 40х100мм. Ест. Влажности</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Обрешетка кровли: </span>*/}
-                    {/*        <small>Доска 25х100мм. 2 сорт. Ест. Влажности</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Гидроизоляция кровли: </span>*/}
-                    {/*        <small>Изоспан "D"</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Кровля покрытие: </span>*/}
-                    {/*        <small>Профлист С-10 Оцынкованный+ Коньковые*/}
-                    {/*            элементы+Крепеж</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Изоляция стен внешняя: </span>*/}
-                    {/*        <small>Изоспан "А"</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Крепеж: </span>*/}
-                    {/*        <small>Опроы бруса, саморезы ,гвозди, скобы</small>*/}
-                    {/*    </li>*/}
-                    {/*    <li className="list-group-item">*/}
-                    {/*        <span className="fw-bold">Антисептик Неомид: </span>*/}
-                    {/*        <small>Антисептик для обработки обвязки и лаг пола*/}
-                    {/*            от плесени синевы и гниения</small>*/}
-                    {/*    </li>*/}
-                    {/*</ul>*/}
                 </div>
 
                 <div className="p-4 bg-white mt-5 shadow rounded">
@@ -237,7 +197,7 @@ export default function Index({project, setPrice}) {
                     <div className="d-flex px-1 mb-3">
                         { !!project.plans_right.length && <button className="btn btn-primary" onClick={() => setIsMired(!isMired)}>
                             <i className="bi bi-arrow-counterclockwise"></i> Отзеркалить
-                        </button> }
+                        </button>}
                     </div>
 
                     <GalleryWrap
@@ -248,7 +208,10 @@ export default function Index({project, setPrice}) {
                 </div>
 
                 <div className="mt-5 bg-white shadow rounded">
-                    <h4 className="px-4 pt-4 mb-0">Выберите компоненты для своей бани</h4>
+                    <h4 className="px-4 pt-4 mb-0">Для строительства бани под ключ выберите комплектующие</h4>
+                    <p className="text-muted px-4"><i className="bi bi-info-circle-fill text-success"/>
+                    Вы можете не выбирать
+                    </p>
                     <KitItem
                         modalTitle='Фундамент'
                         checked={checkFund}
@@ -265,6 +228,12 @@ export default function Index({project, setPrice}) {
                                 setModalShowFund(false)
                             }}/>}
                     />
+                    <Otdelka
+                        form={checkOtdelka}
+                        setForm={setCheckOtdelka}
+                        data={project.kits.отделка}
+                    />
+
                     <KitItem
                         modalTitle='Печь'
                         checked={checkPech}
@@ -306,20 +275,6 @@ export default function Index({project, setPrice}) {
                             setChecked={(val) => {
                                 setCheckObustr(val);
                                 setModalShowObustr(false)
-                            }}/>}
-                    />
-
-                    <KitItem
-                        modalTitle='Отделка'
-                        checked={checkOtdelka}
-                        modalShow={modalShowOtdelka}
-                        setModalShow={setModalShowOtdelka}
-                        modalBody={<CheckBoxGroup
-                            list={formatOtdelka(project.kits.отделка)}
-                            checked={checkFund}
-                            setChecked={(val) => {
-                                setCheckOtdelka(val);
-                                setModalShowOtdelka(false)
                             }}/>}
                     />
 

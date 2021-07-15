@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import ConstructorBani from "../../src/pages/constructorBani/constructorBani";
 
+const {API_URL} = process.env
+
 export async function getStaticProps({params}) {
-    let res = await fetch(`http://localhost:1337/banis`)
+    let res = await fetch(`${API_URL}/banis`)
     res = await res.json()
 
     const baniBySizes = {};
