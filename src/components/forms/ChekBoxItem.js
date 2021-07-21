@@ -19,10 +19,11 @@ function CustomToggle({children, eventKey}) {
     );
 }
 
-export default function CheckBoxGroup({list, checked, setChecked}) {
+export default function CheckBoxGroup({list, checked, setChecked, multiple = false}) {
     return list.map((el) =>
         <React.Fragment key={el.name}>
             <ChekBoxItem
+                multiple={multiple}
                 name={el.name}
                 price={el.price}
                 img={el.img}
@@ -36,7 +37,9 @@ export default function CheckBoxGroup({list, checked, setChecked}) {
     )
 }
 
-function ChekBoxItem({name, price, img, shortDesc, more, onChecked, checkedName, checkItem}) {
+// пожарка радио + 1 чекбокс
+
+function ChekBoxItem({name, price, img, shortDesc, more, onChecked, checkedName, checkItem, multiple}) {
     return <div className="p-0 mb-3 rounded border bg-light">
         <div className="p-3 cpoint" onClick={() => onChecked(checkItem)}>
             <div className="d-flex w-100 justify-content-between">

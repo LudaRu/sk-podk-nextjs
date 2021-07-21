@@ -49,6 +49,8 @@ function format(data) {
 }
 
 export default function Index({project, setPrice}) {
+    const [isShowPlan, setIsShowPlan] = useState(false);
+
     const [checkFund, setCheckFund] = useState({})
     const [modalShowFund, setModalShowFund] = useState(false)
 
@@ -191,26 +193,9 @@ export default function Index({project, setPrice}) {
                     </div>
                 </div>
 
-                <div className="p-4 bg-white mt-5 shadow rounded">
-                    <h4 className="mb-0">Варианты планировки</h4>
-                    <p className="text-muted"><i className="bi bi-info-circle-fill text-success"/> Планировка может быть изменена </p>
-                    <div className="d-flex px-1 mb-3">
-                        { !!project.plans_right.length && <button className="btn btn-primary" onClick={() => setIsMired(!isMired)}>
-                            <i className="bi bi-arrow-counterclockwise"></i> Отзеркалить
-                        </button>}
-                    </div>
-
-                    <GalleryWrap
-                        images={!isMired ? project.plans_left : project.plans_right}
-                        slideDuration={0}
-                        thumbnailPosition="left"
-                    />
-                </div>
-
                 <div className="mt-5 bg-white shadow rounded">
                     <h4 className="px-4 pt-4 mb-0">Для строительства бани под ключ выберите комплектующие</h4>
-                    <p className="text-muted px-4"><i className="bi bi-info-circle-fill text-success"/>
-                    Вы можете не выбирать
+                    <p className="text-muted px-4"><i className="bi bi-info-circle-fill text-success"/> Вы можете не выбирать
                     </p>
                     <KitItem
                         modalTitle='Фундамент'
@@ -267,6 +252,7 @@ export default function Index({project, setPrice}) {
                         modalShow={modalShowObustr}
                         setModalShow={setModalShowObustr}
                         modalBody={<CheckBoxGroup
+                            multiple
                             list={[{
                                 name: 'нет',
                                 price: 0,
@@ -326,6 +312,23 @@ export default function Index({project, setPrice}) {
                                 setModalShowPojar(false)
                             }}/>}
                     />
+                </div>
+
+
+                <div className="p-4 bg-white mt-5 shadow rounded">
+                    <h4 className="mb-0">Варианты планировки</h4>
+                    <p className="text-muted"><i className="bi bi-info-circle-fill text-success"/> Планировка может быть изменена </p>
+                    <div className="d-flex px-1 mb-3">
+                        { !!project.plans_right.length && <button className="btn btn-primary" onClick={() => setIsMired(!isMired)}>
+                            <i className="bi bi-arrow-counterclockwise"></i> Отзеркалить
+                        </button>}
+                    </div>
+                    <GalleryWrap
+                        images={!isMired ? project.plans_left : project.plans_right}
+                        slideDuration={0}
+                        thumbnailPosition="left"
+                    />
+
                 </div>
             </div>
         </>

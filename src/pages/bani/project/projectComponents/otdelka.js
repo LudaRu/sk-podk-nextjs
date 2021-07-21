@@ -13,7 +13,6 @@ export default function Otdelka({data, form, setForm}) {
     const handleInputChange = (event) => {
         const target = event.target;
         const name = target.name;
-        console.log(target)
 
         if (target.type === 'checkbox' ) {
             let x = {...form[name]};
@@ -36,8 +35,6 @@ export default function Otdelka({data, form, setForm}) {
         }
     };
 
-    console.log(form)
-
     // useEffect(() => {
     //     let sum = 0;
     //     const saveCheckOtdelka = {...form};
@@ -57,6 +54,7 @@ export default function Otdelka({data, form, setForm}) {
     // }, [form])
 
 
+
     const subKits = Object.keys(data);
     const checkedSubKit = Object.keys(form);
 
@@ -67,7 +65,6 @@ export default function Otdelka({data, form, setForm}) {
     }
 
     const onSave = (values) => {
-        console.log(values)
         setModalShow(false)
     };
 
@@ -98,16 +95,12 @@ export default function Otdelka({data, form, setForm}) {
 
                 </div>
             </div>
+            <RenderViewKits
+                form={form}
+                checkedSubKit={checkedSubKit}
+                subKits={subKits}
+            />
 
-            { !!checkedSubKit.length && <div className="list-group list-group-flush">
-                {checkedSubKit.map((categ, i) => (
-                    <div className="py-1" key={i}>
-                        <span className="fw-bold">{categ}: </span>
-                        <small>{Object.keys(form[categ])[0]}</small>
-                        <small className="rounded bg-secondary px-2 py-1">+{localCheckList?.[categ]?.[Object.keys(form[categ])[0]]}</small>
-                    </div>
-                ))}
-            </div>}
         </div>
 
         <Modal
@@ -120,12 +113,6 @@ export default function Otdelka({data, form, setForm}) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">Отделка</Modal.Title>
-
-                {/*<div className="d-flex gap-4">*/}
-                {/*    <div className="p-3 bg-secondary">Своими руками</div>*/}
-                {/*    <div className="p-3 bg-warning">Дача эконом</div>*/}
-                {/*    <div className="p-3 bg-danger">Тёплая премиум</div>*/}
-                {/*</div>*/}
             </Modal.Header>
             <Modal.Body>
                 {subKits.map((categ) => (<>
@@ -161,4 +148,31 @@ export default function Otdelka({data, form, setForm}) {
             </Modal.Footer>
         </Modal>
     </>)
+}
+
+function RenderViewKits({form, checkedSubKit, subKits}) {
+console.log('form, checkedSubKit, subKits', form)
+    return <>
+        { !!checkedSubKit.length && <div className="list-group list-group-flush">
+            {subKits.map((categ, i) => (
+                <div className="py-1" key={i}>
+                    <span className="fw-bold">{categ}: </span>
+
+                    {form[categ] &&  Object.keys(form[categ]).length > 1
+                        ? Object.keys(form[categ]).map(elem => (
+                            <div><small><i className="bi bi-check-circle-fill text-success"></i> {elem}</small></div>
+                        ))
+                        :  <div><small>  {
+                            form[categ] ?
+                            <><i className="bi bi-check-circle-fill text-success"></i> {Object.keys(form[categ])[0]}</> :
+                                <> <i className="bi bi-dash-circle-fill text-danger"></i> не выбрано</>}
+                        </small></div>
+                    }
+
+                    {/*<small>{Object.keys(form[categ])[0]}</small>*/}
+                    {/*<small className="rounded bg-secondary px-2 py-1">+{localCheckList?.[categ]?.[Object.keys(form[categ])[0]]}</small>*/}
+                </div>
+            ))}
+        </div>}
+    </>;
 }
