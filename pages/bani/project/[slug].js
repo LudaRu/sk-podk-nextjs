@@ -1,6 +1,7 @@
 import Head from "next/head";
 import ProjectPage from "../../../src/pages/bani/project/project";
 import OnlyMain from "../../../src/layout/onlyMain";
+import {formatKits} from "../../../utils";
 
 const {API_URL} = process.env
 
@@ -23,19 +24,20 @@ export async function getStaticProps({params}) {
     res2 = await res2.json()
 
     // res1[0].kits.фундамент
-    res1[0].kits.фундамент.forEach(el => {
-        res2.forEach(item => {
-            if (el.name.toUpperCase().replace(/\s/g, '') === item.key.toUpperCase().replace(/\s/g, '')) {
-                el.id = item.id
-                el.img = item.img
-                el.name = item.name
-                el.key = item.key
-                el.more = item.more
-                el.short_desk = item.short_desk
-            }
-        })
+    // res1[0].kits.фундамент.forEach(el => {
+    //     res2.forEach(item => {
+    //         if (el.name.toUpperCase().replace(/\s/g, '') === item.key.toUpperCase().replace(/\s/g, '')) {
+    //             el.id = item.id
+    //             el.img = item.img
+    //             el.name = item.name
+    //             el.key = item.key
+    //             el.more = item.more
+    //             el.short_desk = item.short_desk
+    //         }
+    //     })
+    // })
 
-    })
+    res1[0].kits = formatKits(res1[0].kits)
 
     return {
         props: {

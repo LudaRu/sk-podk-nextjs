@@ -1,6 +1,6 @@
 {
   "name": "sk-podk-nextjs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -27,7 +27,6 @@
     "react-dadata": "^2.9.3",
     "react-dom": "17.0.2",
     "react-image-gallery": "^1.1.1",
-    "react-step-wizard": "^5.3.6",
     "yup": "^0.32.9"
   }
 }

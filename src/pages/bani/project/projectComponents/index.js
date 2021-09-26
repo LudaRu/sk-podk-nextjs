@@ -1,11 +1,8 @@
 import {Button, Col, Container, Modal, Row} from "react-bootstrap";
-import classNames from 'classnames';
 import React, {useEffect, useState} from "react";
 import css from "./style.module.scss";
-import KitItem from "./kitItem";
-import CheckBoxGroup from "../../../../components/forms/ChekBoxItem";
 import GalleryWrap from "../../../../components/gallery/galleryWrap";
-import Otdelka from "./otdelka";
+import ItemKit from "./ItemKit";
 
 
 function formatOtdelka(data) {
@@ -97,13 +94,13 @@ export default function Index({project, setPrice}) {
     useEffect(() => {
         if (localStorage.getItem('karkasKit')) {
             const karkasKit = JSON.parse(localStorage.getItem('karkasKit'));
-            setCheckFund((getStateFormat(karkasKit.checkFund, project.kits.фундамент)) || {})
-            // setCheckOtdelka(getStateFormat(karkasKit.checkOtdelka, formatOtdelka(project.kits.отделка)) || {})
-            setCheckPech(getStateFormat(karkasKit.checkPech, [...project.kits.печное.печь.сталь, ...project.kits.печное.печь.чугун]) || {})
-            setCheckBac(getStateFormat(karkasKit.checkBac, project.kits.печное.бак) || {})
-            setCheckDimo(getStateFormat(karkasKit.checkDimo, project.kits.печное.дымоход) || {})
-            setCheckPojar(getStateFormat(karkasKit.checkPojar, project.kits.пожарная) || {})
-            setCheckObustr(getStateFormat(karkasKit.checkObustr, project.kits.печное.обустройство) || {})
+            // setCheckFund((getStateFormat(karkasKit.checkFund, project.kits.фундамент)) || {})
+            // // setCheckOtdelka(getStateFormat(karkasKit.checkOtdelka, formatOtdelka(project.kits.отделка)) || {})
+            // setCheckPech(getStateFormat(karkasKit.checkPech, [...project.kits.печное.печь.сталь, ...project.kits.печное.печь.чугун]) || {})
+            // setCheckBac(getStateFormat(karkasKit.checkBac, project.kits.печное.бак) || {})
+            // setCheckDimo(getStateFormat(karkasKit.checkDimo, project.kits.печное.дымоход) || {})
+            // setCheckPojar(getStateFormat(karkasKit.checkPojar, project.kits.пожарная) || {})
+            // setCheckObustr(getStateFormat(karkasKit.checkObustr, project.kits.печное.обустройство) || {})
         }
     }, [])
 
@@ -194,124 +191,165 @@ export default function Index({project, setPrice}) {
                 </div>
 
                 <div className="mt-5 bg-white shadow rounded">
-                    <h4 className="px-4 pt-4 mb-0">Для строительства бани под ключ выберите комплектующие</h4>
-                    <p className="text-muted px-4"><i className="bi bi-info-circle-fill text-success"/> Вы можете не выбирать
-                    </p>
-                    <KitItem
-                        modalTitle='Фундамент'
-                        checked={checkFund}
-                        modalShow={modalShowFund}
-                        setModalShow={setModalShowFund}
-                        modalBody={<CheckBoxGroup
-                            list={[{
-                                name: 'нет',
-                                price: 0,
-                            }, ...format(project.kits.фундамент)]}
-                            checked={checkFund}
-                            setChecked={(val) => {
-                                setCheckFund(val);
-                                setModalShowFund(false)
-                            }}/>}
+                    <h4 className="px-3 pt-4 mb-0">Для строительства бани под ключ выберите комплектующие</h4>
+                    <p className="text-muted px-3 pt-1"><i className="bi bi-info-circle-fill text-success"/> Вы можете собрать полностью свою комплектацию</p>
+                    <ItemKit
+                        title='Фундамент'
+                        data={{фундамент: project.kits.фундамент}}
+                        form={checkFund}
+                        setForm={setCheckFund}
                     />
-                    <Otdelka
+                    <ItemKit
+                        title='Отделка'
+                        data={project.kits.отделка}
                         form={checkOtdelka}
                         setForm={setCheckOtdelka}
-                        data={project.kits.отделка}
                     />
+                    <ItemKit
+                        title='Печь'
+                        data={project.kits.печь}
+                        form={checkPech}
+                        setForm={setCheckPech}
+                    />
+                    <ItemKit
+                        title='Дымоход'
+                        data={{дымоход: project.kits.дымоход}}
+                        form={checkDimo}
+                        setForm={setCheckDimo}
+                    />
+                    <ItemKit
+                        title='Бак'
+                        data={{бак: project.kits.бак}}
+                        form={checkBac}
+                        setForm={setCheckBac}
+                    />
+                    <ItemKit
+                        title='Обустройство печи'
+                        data={{'обустройство печи': project.kits['обустройство печи']}}
+                        form={checkObustr}
+                        setForm={setCheckObustr}
+                    />
+                    <ItemKit
+                        title='Пожарная безопасность'
+                        data={project.kits['пожарная безопасность']}
+                        form={checkPojar}
+                        setForm={setCheckPojar}
+                    />
+                    {/*<KitItem*/}
+                    {/*    modalTitle='Фундамент'*/}
+                    {/*    checked={checkFund}*/}
+                    {/*    modalShow={modalShowFund}*/}
+                    {/*    setModalShow={setModalShowFund}*/}
+                    {/*    modalBody={<CheckBoxGroup*/}
+                    {/*        list={[{*/}
+                    {/*            name: 'нет',*/}
+                    {/*            price: 0,*/}
+                    {/*        }, ...format(project.kits.фундамент)]}*/}
+                    {/*        checked={checkFund}*/}
+                    {/*        setChecked={(val) => {*/}
+                    {/*            setCheckFund(val);*/}
+                    {/*            setModalShowFund(false)*/}
+                    {/*        }}/>}*/}
+                    {/*/>*/}
+                    {/*<Otdelka*/}
+                    {/*    form={checkOtdelka}*/}
+                    {/*    setForm={setCheckOtdelka}*/}
+                    {/*    data={project.kits.отделка}*/}
+                    {/*/>*/}
 
-                    <KitItem
-                        modalTitle='Печь'
-                        checked={checkPech}
-                        modalShow={modalShowPech}
-                        setModalShow={setModalShowPech}
-                        modalBody={<>
-                            <h6>Чугунные</h6>
-                            <CheckBoxGroup
-                                list={[{name: 'нет', price: 0}, ...format(project.kits.печное.печь.чугун)]}
-                                checked={checkPech}
-                                setChecked={(val) => {
-                                    setCheckPech(val);
-                                    setModalShowPech(false)
-                                }}
-                            />
-                            <h6>Стальные</h6>
-                            <CheckBoxGroup
-                                list={[{name: 'нет', price: 0}, ...format(project.kits.печное.печь.сталь)]}
-                                checked={checkPech}
-                                setChecked={(val) => {
-                                    setCheckPech(val);
-                                    setModalShowPech(false)
-                                }}
-                            />
-                        </>}
-                    />
+                    {/*<KitItem*/}
+                    {/*    modalTitle='Печь'*/}
+                    {/*    checked={checkPech}*/}
+                    {/*    modalShow={modalShowPech}*/}
+                    {/*    setModalShow={setModalShowPech}*/}
+                    {/*    modalBody={<>*/}
+                    {/*        <h6>Чугунные</h6>*/}
+                    {/*        <CheckBoxGroup*/}
+                    {/*            list={[{name: 'нет', price: 0}, ...format(project.kits.печное.печь.чугун)]}*/}
+                    {/*            checked={checkPech}*/}
+                    {/*            setChecked={(val) => {*/}
+                    {/*                setCheckPech(val);*/}
+                    {/*                setModalShowPech(false)*/}
+                    {/*            }}*/}
+                    {/*        />*/}
+                    {/*        <h6>Стальные</h6>*/}
+                    {/*        <CheckBoxGroup*/}
+                    {/*            list={[{name: 'нет', price: 0}, ...format(project.kits.печное.печь.сталь)]}*/}
+                    {/*            checked={checkPech}*/}
+                    {/*            setChecked={(val) => {*/}
+                    {/*                setCheckPech(val);*/}
+                    {/*                setModalShowPech(false)*/}
+                    {/*            }}*/}
+                    {/*        />*/}
+                    {/*    </>}*/}
+                    {/*/>*/}
 
-                    <KitItem
-                        modalTitle='Обустройство печи'
-                        checked={checkObustr}
-                        modalShow={modalShowObustr}
-                        setModalShow={setModalShowObustr}
-                        modalBody={<CheckBoxGroup
-                            multiple
-                            list={[{
-                                name: 'нет',
-                                price: 0,
-                            }, ...format(project.kits.печное.обустройство)]}
-                            checked={checkObustr}
-                            setChecked={(val) => {
-                                setCheckObustr(val);
-                                setModalShowObustr(false)
-                            }}/>}
-                    />
+                    {/*<KitItem*/}
+                    {/*    modalTitle='Обустройство печи'*/}
+                    {/*    checked={checkObustr}*/}
+                    {/*    modalShow={modalShowObustr}*/}
+                    {/*    setModalShow={setModalShowObustr}*/}
+                    {/*    modalBody={<CheckBoxGroup*/}
+                    {/*        multiple*/}
+                    {/*        list={[{*/}
+                    {/*            name: 'нет',*/}
+                    {/*            price: 0,*/}
+                    {/*        }, ...format(project.kits.печное.обустройство)]}*/}
+                    {/*        checked={checkObustr}*/}
+                    {/*        setChecked={(val) => {*/}
+                    {/*            setCheckObustr(val);*/}
+                    {/*            setModalShowObustr(false)*/}
+                    {/*        }}/>}*/}
+                    {/*/>*/}
 
-                    <KitItem
-                        modalTitle='Бак'
-                        checked={checkBac}
-                        modalShow={modalShowBac}
-                        setModalShow={setModalShowBac}
-                        modalBody={<CheckBoxGroup
-                            list={[{
-                                name: 'нет',
-                                price: 0,
-                            }, ...format(project.kits.печное.бак)]}
-                            checked={checkBac}
-                            setChecked={(val) => {
-                                setCheckBac(val);
-                                setModalShowBac(false)
-                            }}/>}
-                    />
-                    <KitItem
-                        modalTitle='Дымоход'
-                        checked={checkDimo}
-                        modalShow={modalShowDimo}
-                        setModalShow={setModalShowDimo}
-                        modalBody={<CheckBoxGroup
-                            list={[{
-                                name: 'нет',
-                                price: 0,
-                            }, ...format(project.kits.печное.дымоход)]}
-                            checked={checkDimo}
-                            setChecked={(val) => {
-                                setCheckDimo(val);
-                                setModalShowDimo(false)
-                            }}/>}
-                    />
-                    <KitItem
-                        modalTitle='Пожарная безопасность'
-                        checked={checkPojar}
-                        modalShow={modalShowPojar}
-                        setModalShow={setModalShowPojar}
-                        modalBody={<CheckBoxGroup
-                            list={[{
-                                name: 'нет',
-                                price: 0,
-                            }, ...format(project.kits.пожарная)]}
-                            checked={checkPojar}
-                            setChecked={(val) => {
-                                setCheckPojar(val);
-                                setModalShowPojar(false)
-                            }}/>}
-                    />
+                    {/*<KitItem*/}
+                    {/*    modalTitle='Бак'*/}
+                    {/*    checked={checkBac}*/}
+                    {/*    modalShow={modalShowBac}*/}
+                    {/*    setModalShow={setModalShowBac}*/}
+                    {/*    modalBody={<CheckBoxGroup*/}
+                    {/*        list={[{*/}
+                    {/*            name: 'нет',*/}
+                    {/*            price: 0,*/}
+                    {/*        }, ...format(project.kits.печное.бак)]}*/}
+                    {/*        checked={checkBac}*/}
+                    {/*        setChecked={(val) => {*/}
+                    {/*            setCheckBac(val);*/}
+                    {/*            setModalShowBac(false)*/}
+                    {/*        }}/>}*/}
+                    {/*/>*/}
+                    {/*<KitItem*/}
+                    {/*    modalTitle='Дымоход'*/}
+                    {/*    checked={checkDimo}*/}
+                    {/*    modalShow={modalShowDimo}*/}
+                    {/*    setModalShow={setModalShowDimo}*/}
+                    {/*    modalBody={<CheckBoxGroup*/}
+                    {/*        list={[{*/}
+                    {/*            name: 'нет',*/}
+                    {/*            price: 0,*/}
+                    {/*        }, ...format(project.kits.печное.дымоход)]}*/}
+                    {/*        checked={checkDimo}*/}
+                    {/*        setChecked={(val) => {*/}
+                    {/*            setCheckDimo(val);*/}
+                    {/*            setModalShowDimo(false)*/}
+                    {/*        }}/>}*/}
+                    {/*/>*/}
+                    {/*<KitItem*/}
+                    {/*    modalTitle='Пожарная безопасность'*/}
+                    {/*    checked={checkPojar}*/}
+                    {/*    modalShow={modalShowPojar}*/}
+                    {/*    setModalShow={setModalShowPojar}*/}
+                    {/*    modalBody={<CheckBoxGroup*/}
+                    {/*        list={[{*/}
+                    {/*            name: 'нет',*/}
+                    {/*            price: 0,*/}
+                    {/*        }, ...format(project.kits.пожарная)]}*/}
+                    {/*        checked={checkPojar}*/}
+                    {/*        setChecked={(val) => {*/}
+                    {/*            setCheckPojar(val);*/}
+                    {/*            setModalShowPojar(false)*/}
+                    {/*        }}/>}*/}
+                    {/*/>*/}
                 </div>
 
 
